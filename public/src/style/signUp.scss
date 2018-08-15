@@ -1,0 +1,28 @@
+@import './reset.scss';
+@import './common.scss';
+@import './signIn.scss';
+
+.submit {
+    margin-top: 15px;
+}
+
+.auth_code {
+    position: relative;
+}
+
+.get_auth_code {
+    position: absolute;
+    height: 36px;
+    line-height: 36px;
+    right: 7px;
+    top: 7px;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 20px;
+    background-color: #3194d0;
+    &:hover {
+        background-color: #187cb7;
+    }
+}

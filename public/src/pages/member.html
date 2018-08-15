@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../assets/img/shier.png" type="image/x-icon">
+    <title><?= member.alias ?> - 微识</title>
+</head>
+<body>
+    <?- include('header.html')?>
+    <div class="container">
+        <div class="member_left">
+            <div class="member_info">
+                <img src="<?= member.avatar ?>" title="<?= member.alias ?>" class="avatar"/>
+                <div class="member_statistic">
+                    <h1><?= member.alias ?></h1>
+                    <div class="statistic_info">
+                        <a href="javascript:;" class="statistic">
+                            <span><?= member.attentions.length ?></span>
+                            <span>关注</span>
+                        </a>
+                        <a href="javascript:;" class="statistic">
+                            <span><?= member.fans.length ?></span>
+                            <span>粉丝</span>
+                        </a>
+                        <a href="javascript:;" class="statistic">
+                            <span><?= listCount ?></span>
+                            <span>文章</span>
+                        </a>
+                        <a href="javascript:;" class="statistic">
+                            <span><?= heartCount ?></span>
+                            <span>收获喜欢</span>
+                        </a>
+                    </div>
+                </div>
+                <button class="handle_focus_on <?- user && member.fans.includes(user._id) ? 'focus_on' : 'no_focus' ?>">
+                    <? if (user && member.fans.includes(user._id)){ ?>
+                        <span class="focus_on_icon"></span>已关注
+                    <? } else { ?>
+                        <span class="cancel_focus_on add_focus"></span>加关注
+                    <? } ?>
+                </button>
+            </div>
+        </div>
+        <div class="member_right">
+            <!-- 标签列表 -->
+            <div class="statistic_list">
+                <span class="statistic_title">他的标签</span>
+                <div class="statistic_result">
+                    <? tags.forEach(function (tag){ ?>
+                        <a class="statistic_li" href="/m/<?= member.userName ?>/t/<?= tag ?>">
+                            <?= tag ?>
+                        </a>
+                    <? }) ?>
+                </div>
+            </div>
+            <!-- 随笔档案 -->
+            <div class="statistic_list">
+                <span class="statistic_title">随笔档案</span>
+                <div class="statistic_result">
+                </div>
+            </div>
+            <!-- 推荐排行 -->
+            <div class="statistic_list">
+                <span class="statistic_title">推荐排行</span>
+                <div class="statistic_result">
+                </div>
+            </div>
+            <!-- 评论排行 -->
+            <div class="statistic_list">
+                <span class="statistic_title">评论排行</span>
+                <div class="statistic_result">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <? if (env === 'development') { ?>
+    	<script src="http://localhost:3333/member.js"></script>
+    <? } ?>
+</body>
+</html>

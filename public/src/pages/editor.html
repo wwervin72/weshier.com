@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../assets/img/shier.png" type="image/x-icon">
+    <title>Document</title>
+    <link rel="stylesheet" href="/lib/editor.md/css/editormd.min.css">
+</head>
+<body>
+    <?- include('header.html', {user: user}) ?>
+    <div class="ws_editor">
+        <div class="title">
+            <input type="text" name="title" class="title_ipt" autocomplete="off" id="title_ipt" placeholder="添加标题"/>
+        </div>
+        <div class="tags">
+            <input type="text" name="tag" id="tag_ipt" class="tag_ipt" placeholder="添加标签">
+        </div>
+        <div id="editor">
+            <textarea style="display:none;"></textarea>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/lib/editor.md/editormd.min.js"></script>
+    <? if (env === 'development') { ?>
+    	<script src="http://localhost:3333/editor.js"></script>
+    <? } ?>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../assets/img/shier.png" type="image/x-icon">
+    <title>糟糕，出错了 - 微识</title>
+</head>
+<body>
+    <?- include('header.html') ?>
+    <? if (env === 'development') { ?>
+        <?= error ?>
+    <? } else { ?>
+        <h1>糟糕，出错了！</h1>
+    <? } ?>
+    <? if (env === 'development') { ?>
+    	<script src="http://localhost:3333/500.js"></script>
+    <? } ?>
+</body>
+</html>

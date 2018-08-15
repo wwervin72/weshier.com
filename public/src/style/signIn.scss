@@ -1,0 +1,126 @@
+@import './common.scss';
+
+body {
+    background-color: #f1f1f1;
+}
+
+.logo {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    font-size: 50px;
+    font-weight: 500;
+    color: #EA6F5A;
+}
+
+.sign_in_up {
+    width: 400px;
+    margin: 110px auto 0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+    padding: 50px 50px 30px;
+    background-color: #fff;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 50px;
+    a {
+        padding: 10px;
+        border-bottom: 2px solid transparent;
+        &.active {
+            color: #ea6f5a;
+            border-bottom-color: #ea6f5a;
+            font-weight: 600;
+        }
+    }
+    .spot {
+        padding: 0 10px;
+        font-size: 15px;
+        color: #969696;
+    }
+}
+
+.form_item {
+    width: 100%;
+    height: 50px;
+    background-color: #f1f1f1;
+    border: 1px solid #cbcbcb;
+    border-bottom: none;
+    &.last {
+        border-bottom: 1px solid #cbcbcb;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    &.first {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+    input {
+        width: 100%;
+        height: 100%;
+        padding: 4px 4px 4px 35px;
+        border: none;
+        background-color: transparent;
+    }
+}
+
+.sign_in_help {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember_me {
+    input, span {
+        vertical-align: middle;
+    }
+}
+
+.forget_pwd {
+    color: #aaa;
+    transition: color .3s ease-in-out;
+    &:hover {
+        color: #4f4f4f;
+    }
+}
+
+.submit {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background-color: #3194d0;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 25px;
+    letter-spacing: 5px;
+    transition: all .3s ease-in-out;
+    &:hover {
+        background-color: #187cb7;
+    }
+}
+
+.fast_sign_in {
+    position: relative;
+    width: 80%;
+    margin: 50px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid #b5b5b5;
+    text-align: center;
+    &::before {
+        position: absolute;
+        content: '社交账号登录';
+        padding: 0 20px;
+        white-space: nowrap;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -60%);
+        font-size: 12px;
+        background-color: #fff;
+        color: #b5b5b5;
+    }
+}

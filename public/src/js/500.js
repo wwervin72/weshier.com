@@ -1,0 +1,1 @@
+import '@/style/500.scss'

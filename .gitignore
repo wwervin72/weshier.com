@@ -1,0 +1,7 @@
+node_modules
+markDownDir
+logs
+public/dist
+public/upload
+.cache
+.env

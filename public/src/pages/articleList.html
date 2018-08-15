@@ -1,0 +1,24 @@
+<ul class="article_list" id="article_list">
+    <? articles.forEach(function (article) { ?>
+        <li class="article">
+            <div class="main">
+                <div class="content">
+                    <a class="title" href="/<?= article.author.userName ?>/a/<?= article.id ?>">
+                        <?= article.title ?>
+                    </a>
+                    <p class="abstract">
+                        <?= article.abstract ?>
+                    </p>
+                </div>
+                <a class="avatar" href="/<?= article.author.userName ?>/a/<?= article.id ?>">
+                    <img src="<?= article.avatar ?>" title="<?= article.title ?>">
+                </a>
+            </div>
+            <div class="base_info">
+                <span class="alias_update"><a href="/m/<?= article.author.userName ?>"><?= article.author.alias ?></a> 发布于 <?= article.updateAt ?></span>
+                <span class="heart_num"><?= article.heartLen ?></span>
+                <span class="comment_num"><?= article.commentsLen ?></span>
+            </div>
+        </li>    
+    <? }) ?>
+</ul>

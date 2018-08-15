@@ -1,0 +1,46 @@
+<div class="ws_header" id="ws_header">
+    <div class="ws_header_content">
+        <a href="/" class="logo"></a>
+        <div class="user_area">
+            <div class="user_left">
+
+            </div>
+            <div class="user_right">
+                <? if (user) { ?>
+                    <div class="user_dropdown">
+                        <a href="/m/<?= user.userName ?>">
+                            <img src="<?= user.avatar ?>" class="avatar" title="<?= user.alias ?>">
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="/m/<?= user.userName ?>">主页</a></li>
+                            <li><a href="/setting/basic">设置</a></li>
+                            <li><a href="/api/signOut">退出</a></li>
+                        </ul>
+                    </div>
+                <? } else { ?>
+                    <a href="/signIn">登录</a>
+                    <a href="/signUp">加入微识</a>
+                <? } ?>
+                <a href="/editor">写点啥？</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const header = document.getElementById("ws_header")
+    let shadowFlag = false
+    window.addEventListener('scroll', evt => {
+        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+        if (scrollTop >= 50) {
+            if (!shadowFlag) {
+                shadowFlag = true
+                header.setAttribute('class', header.getAttribute('class') + ' slide_down')
+            }
+        } else {
+            if (shadowFlag) {
+                shadowFlag = false
+                header.setAttribute('class', header.getAttribute('class').replace(/slide_down/g, '').trim())
+            }
+        }
+    })
+</script>

@@ -1,0 +1,76 @@
+@import './reset.scss';
+@import './common.scss';
+@import './header.scss';
+
+html, body, .ws_editor {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+.ws_header {
+    flex: 0 0 50px;
+    height: 50px;
+}
+.ws_editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    flex: 0 0 50px;
+    height: 50px;
+}
+.tags {
+    min-height: 30px;
+}
+#editor {
+    flex: 1;
+}
+.title_ipt,
+.tags {
+    width: 100%;
+    padding: 0 20px;
+    cursor: text;
+}
+.title_ipt {
+    height: 100%;
+    border: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.title_ipt {
+    font-weight: 400;
+    font-size: 30px;
+}
+.tag_ipt {
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    background: transparent;
+}
+.tag {
+    padding-left: 10px;
+    height: 26px;
+    line-height: 26px;
+    margin: 5px;
+    background-color: #f1f8ff;
+    border: none;
+    border-radius: 3px;
+    .remove_tag {
+        display: inline-block;
+        height: 100%;
+        margin-left: 5px;
+        padding: 0 8px;
+        cursor: pointer;
+        border-left: 1px solid #b4d9ff;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        transition: all .3s ease-in-out;
+        &:hover {
+            background-color: #DDEEFF;
+        }
+    }
+}

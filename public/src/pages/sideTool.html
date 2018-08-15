@@ -1,0 +1,16 @@
+<ul id="side_tool" class="side_tool">
+    <? tools.forEach(function (tool) { ?>
+        <? if (tool === 'goTop'){ ?>
+            <li class="go_top" id="go_top" title="返回顶部"></li>
+        <? } ?>
+        <? if (tool === 'focusOn'){ ?>
+            <li class="focus_on_author" id="focus_on_author" title="关注作者"><?= tool ?></li>
+        <? } ?>
+        <? if (tool === 'heart'){ ?>
+            <li class="heart_article" id="heart_article" title="赞一个"><?= tool ?></li>
+        <? } ?>
+        <? if (tool === 'collect'){ ?>
+            <li class="collect_article" id="collect_article" title="收藏该文章"></li>
+        <? } ?>
+    <? }) ?>
+</ul>

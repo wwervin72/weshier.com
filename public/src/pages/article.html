@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../assets/img/shier.png" type="image/x-icon">
+    <title><?= article.title ?> - 微识</title>
+    <link rel="stylesheet" href="/lib/editor.md/css/editormd.preview.min.css">
+</head>
+<body>
+    <?- include('header.html') ?>
+    <div class="container">
+        <h1 class="title"><?= article.title ?></h1>
+        <div class="author_info">
+            <a class="avatar" href="/m/<?= article.author.userName ?>">
+                <img src="<?= article.author.avatar ?>" title="<?= article.author.alias ?>">
+            </a>
+            <div class="info">
+                <div class="author">
+                    <a class="alias" href="/m/<?= article.author.userName ?>"><?= article.author.alias ?></a>
+                    <a class="follow" href="javascript:;">+关注</a>
+                </div>
+                <div class="statistic_info">
+                    <span class="statistic_update_at" title="上次更新于<?= article.updateAt ?>">
+                        <?= article.updateAt ?>
+                    </span>
+                    <span class="statistic_content_len">字数 <?= content.length ?></span>
+                    <span class="statistic_comments_len">评论 <?= article.commentsLen ?></span>
+                    <span class="statistic_heart_len">喜欢 <?= article.heartLen ?></span>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="hidden_content" value="<?= content ?>">
+        <div id="content"></div>
+        <div class="tags">
+            <span>标签：</span>
+            <? article.tags.forEach(function (tag) { ?>
+                <a class="tag" href="/m/<?= article.author.userName ?>/t/<?= tag ?>"><?= tag ?></a>
+            <? }) ?>
+        </div>
+        <div class="prev_next">
+            <a href="<?- prevNext[0] ? '/' + article.author.userName + '/a/' + prevNext[0].id : 'javascript:;' ?>">
+                上一篇：<?= prevNext[0] ? prevNext[0].title : '没有了' ?>
+            </a>
+            <a href="<?- prevNext[1] ? '/' + article.author.userName + '/a/' + prevNext[1].id : 'javascript:;' ?>">
+                下一篇：<?= prevNext[1] ? prevNext[1].title : '没有了' ?>
+            </a>
+        </div>
+        <!-- 作者统计信息 -->
+        <!-- 点赞 分享区域 -->
+        <div class="heart_share">
+            <!-- hearted_article -->
+            <div class="heart_article <?- hearted ? 'hearted_article' : '' ?>">
+                <span class="heart_label">喜欢</span>
+                <? if (article.heart.length){ ?>
+                    <span>
+                        <span class="split"></span>
+                        <span class="heart_num"><?= article.heart.length ?></span>
+                    </span>
+                <? } ?>
+            </div>
+        </div>
+        <!-- 评论区域 -->
+        <div class="comment_editor">
+            <img src="<?- user ? user.avatar : '/public/assets/defaultUserAvatar.png' ?>" 
+                class="comment_avatar" 
+                title="<?- user ? 'user.alias' : '' ?>"/>
+            <div class="editor_area">
+                <? if (user) { ?>
+                    <textarea class="editor" placeholder="写点啥吧..."></textarea>
+                <? } else {?>
+                    <div class="textarea_no_signin">
+                        <a class="redirect_signin" href="/signIn">登录</a>
+                        <span>后发表评论</span>
+                    </div>
+                <? } ?>
+                <div class="editor_comment_handle">
+                    <div class="emoji_enter_desc">
+                        <div class="emoji">
+                            <a href="javascript:;" class="emoji_btn">emoji</a>
+                        </div>
+                        <span class="enter_desc">Ctrl+Enter 发表</span>
+                    </div>
+                    <div class="cancel_public">
+                        <a href="javascript:;" class="cancel">取消</a>
+                        <a href="javascript:;" class="public">发表</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comments_list">
+            <div class="comments_statistic">
+                <strong><?= article.comments.length ?>条评论</strong>
+            </div>
+            <ul class="comments" id="comments">
+            </ul>
+        </div>
+    </div>
+    <?- include('sideTool.html', {
+        tools: ['goTop', 'focusOn', 'heart', 'collect']
+    }) ?>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+    <script src="https://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>
+	<script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
+	<script src="https://cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"></script>
+	<script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+	<script src="https://cdn.bootcss.com/flowchart/1.7.0/flowchart.min.js"></script>
+	<script src="/lib/editor.md/jquery.flowchart.min.js"></script>
+    <script src="/lib/editor.md/editormd.min.js"></script>
+    <? if (env === 'development') { ?>
+    	<script src="http://localhost:3333/article.js"></script>
+    <? } ?>
+</body>
+</html>
